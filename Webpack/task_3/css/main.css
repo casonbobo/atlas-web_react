@@ -1,0 +1,19 @@
+#logo {
+    background: url('../assets/holberton-logo.jpg');
+    background-size: 200px, 200px;
+}
+button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button span {
+    font-weight: bold;
+}
