@@ -1,6 +1,6 @@
 A NON-EMPTY README
 
-There are so many dang readmes here how could you mis what the project is about 
+There are so many dang readmes here how could you miss what the project is about 
 
 At the end of this project, I are expected to be able to explain to anyone, without the help of Google:
 
