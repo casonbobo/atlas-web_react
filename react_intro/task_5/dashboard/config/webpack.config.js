@@ -12,11 +12,19 @@ module.exports = {
         compress: true,
         port: 8080,
     },
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                use: ['file-loader'],
+                use: ['file-loader',
+                    {
+                            loader: 'image-webpack-loader',
+                            options: {
+                                bypassOnDebug: true,
+                        },
+                    }
+                ],
             },
             {
                 test: /\.css$/,
