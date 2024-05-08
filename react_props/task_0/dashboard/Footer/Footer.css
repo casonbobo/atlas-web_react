@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+:root {
+  --red: #E1160B;
+}
+
+.App-footer p {
+  font-family: 'Galano Grotesque Alt', sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  font-style: italic;
+}
