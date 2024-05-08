@@ -17,7 +17,7 @@ export function Notifications() {
         <ul>
           <NotificationItem data-priority="default" value="New course available" />
           <NotificationItem data-priority="urgent" value="New resume available" />
-          <NotificationItem data-priority="urgent" html={{ __html: getLatestNotification() }} />
+          <NotificationItem className="urgent" html={{ __html: getLatestNotification() }} />
         </ul>
         <button
                 className="button"

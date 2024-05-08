@@ -41,13 +41,13 @@
   background-color: #ff0000;
 }
 
-li[data-priority="default"] {
+[data-priority="default"] {
   font-family: 'Galano Grotesque Alt', sans-serif;
   font-weight: 400;
   color: blue;
 }
 
-li[data-priority="urgent"] {
+[data-priority="urgent"] {
   font-family: 'Galano Grotesque Alt', sans-serif;
   font-weight: 400;
   color: red;

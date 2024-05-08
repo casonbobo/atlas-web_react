@@ -1,11 +1,12 @@
 import React from 'react';
+import './Notifications.css';
 
 
 function NotificationItem({ type, html, value }) {
   const listItemContent = html ? (
-    <li data-priority={type} dangerouslySetInnerHTML={html}></li>
+    <li className={type} dangerouslySetInnerHTML={html}></li>
   ) : (
-    <li data-notification-type={type}>{value}</li>
+    <li className={type}>{value}</li>
   );
 
   return listItemContent;
