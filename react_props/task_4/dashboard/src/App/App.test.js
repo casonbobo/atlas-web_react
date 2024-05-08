@@ -33,3 +33,17 @@ describe('App', () => {
     expect(wrapper.contains(<Footer />)).toBe(true);
   });
 });
+
+test('renders the Login component when isLoggedIn is false', () => {
+  render(<App isLoggedIn={false} />);
+  const loginHeader = screen.getByRole('heading', { name: 'Log In' });
+  expect(loginHeader).toBeInTheDocument();
+});
+
+test('renders the CourseList component when isLoggedIn is true', () => {
+  render(<App isLoggedIn={true} />);
+  const courseListHeader = screen.getByRole('cellheader', { name: 'Available courses' });
+  expect(courseListHeader).toBeInTheDocument();
+  const loginHeader = screen.queryByRole('heading', { name: 'Log In' });
+  expect(loginHeader).not.toBeInTheDocument();
+});
