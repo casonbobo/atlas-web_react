@@ -1,38 +1,34 @@
-// webpack.config.js
 const path = require('path');
 
 module.exports = {
-    entry: '../src/index.js',
+    entry: {
+        main: path.resolve(dirname, '../src/index.js'),
+      },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(dirname, '../dist'),
     },
     devServer: {
-        hot: true,
-        contentBase: path.join(__dirname, 'dist'),
+        port: 3000,
+        static: {
+          directory: path.join(__dirname, '../dist'),
+        },
         compress: true,
-        port: 8080,
-    },
+        hot: true,
+      },
     devtool: 'inline-source-map',
     module: {
         rules: [
             {
-                test: /\.(png|jpg|gif|svg)$/,
-                use: ['file-loader',
-                    {
-                            loader: 'image-webpack-loader',
-                            options: {
-                                bypassOnDebug: true,
-                        },
-                    }
-                ],
+                test: /.(png|jpg|gif|svg)$/,
+                use: ['file-loader', 'image-webpack-loader']
             },
             {
-                test: /\.css$/,
+                test: /.css$/,
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.js$/,
+                test: /.js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from '../App/App.js';
 import Notifications from '../Notifications/Notifications.js';
-import './Notifications.css';
+import '../Notifications/Notifications.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
