@@ -1,5 +1,6 @@
 .Notifications {
   display: flex;
+  text-align: left;
   justify-content: space-between;
   align-items: flex-start;
   border: 5px dotted red;
@@ -16,44 +17,19 @@
   padding-left: 4rem;
 }
 
-.button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: black;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, .5);
-  transition: all 0.2s ease-in-out;
-}
-
-.button:hover {
-  background-color: #ff0000;
-}
-
-li[data-priority="default"] {
+li[data-notification-type="default"] {
   font-family: 'Galano Grotesque Alt', sans-serif;
   font-weight: 400;
   color: blue;
 }
 
-li[data-priority="urgent"] {
+li[data-notification-type="urgent"] {
   font-family: 'Galano Grotesque Alt', sans-serif;
   font-weight: 400;
   color: red;
 }
 
-.urgent {
+ul > li:nth-child(3) {
   font-family: 'Galano Grotesque Alt', sans-serif;
   font-weight: 400;
   font-size: 1.2rem;

@@ -3,7 +3,8 @@ import React from 'react';
 import { getCurrentYear, getFooterCopy } from '../utils/utils.js';
 import Header from '../Header/Header.js';
 import Login from '../Login/Login.js';
-import Notifications from '../Notifications/Notifications.js';
+import Notifications from '../Notifications/Notifications';
+// import Notifications from '../Notifications/Notifications.css';
 import Footer from '../Footer/Footer.js';
 
 function App() {

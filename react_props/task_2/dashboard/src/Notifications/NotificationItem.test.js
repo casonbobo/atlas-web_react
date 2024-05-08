@@ -3,25 +3,21 @@ import { shallow } from 'enzyme';
 import NotificationItem from './NotificationItem';
 
 describe('NotificationItem', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<NotificationItem type="default" value="test" html={{ __html: '<u>test</u>' }} />);
-  });
-
   it('renders without crashing', () => {
-    expect(wrapper.length).toBe(1);
+    shallow(<NotificationItem />);
   });
 
-  it('renders the correct type attribute', () => {
-    expect(wrapper.prop('data-notification-type')).toBe('default');
+  it('renders with type and value props', () => {
+    const type = "default";
+    const value = "test";
+    const wrapper = shallow(<NotificationItem type={type} value={value} />);
+    expect(wrapper.find('li').prop('data-notification-type')).toEqual(type);
+    expect(wrapper.text()).toContain(value);
   });
 
-  it('renders the correct html', () => {
-    expect(wrapper.prop('dangerouslySetInnerHTML')).toEqual({ __html: '<u>test</u>' });
+  it('renders with html prop', () => {
+    const html = { __html: '<u>test</u>' };
+    const wrapper = shallow(<NotificationItem html={html} />);
+    expect(wrapper.html()).toContain('<u>test</u>');
   });
-
-  it('renders the correct value', () => {
-    expect(wrapper.text()).toBe('test');
-  });
-});
+})
