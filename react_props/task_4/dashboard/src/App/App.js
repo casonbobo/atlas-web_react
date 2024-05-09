@@ -15,9 +15,7 @@ function App({isLoggedIn }) {
       <div className="Notification-box"><Notifications /></div>
         <Header />
         <main className="App-body align-items">
-          <div>
-            {isLoggedIn ? <CourseList /> : <Login />}
-          </div>
+          {isLoggedIn ? <CourseList /> : <Login />}
         </main>
       <Footer year={getCurrentYear()} copy={getFooterCopy(true)} />
     </div>
