@@ -26,30 +26,41 @@ export function Notifications({ displayDrawer }) {
 
   return (
     <>
-     <div className="menuItem">
-        <p>Your notifications</p>
-      </div>
-      {displayDrawer && (
-        <div className="Notifications">
-          <div className="Notifications-content">
+    <div className="menuItem">
+      <p>Your Notifications</p>
+    </div>
+    {displayDrawer && (
+      <div className="Notifications">
+        <div className="Notifications-content">
+          {listNotifications.length > 0 && (
             <p>
               Here is the list of notifications
             </p>
-            <ul>
-              <NotificationItem type="default" value="New course available" />
-              <NotificationItem type="urgent" value="New resume available" />
-              <NotificationItem type="urgent" html={{ __html: getLatestNotification() }} />
-            </ul>
-          </div>
-            <button
-              aria-label="Close"
-              style={buttonStyle}
-              onClick={handleButtonClick}>
-                <img src={closeIcon} alt="Close" style={iconStyle} />
-            </button>
+          )}
+          <ul>
+            {listNotifications.length === 0 ? (
+              <NotificationItem value='No new notification for now' />
+            ) : (
+              listNotifications.map(notification => (
+                <NotificationItem
+                  key={notification.id}
+                  type={notification.type}
+                  value={notification.value}
+                  html={notification.html}
+                />
+              ))
+            )}
+          </ul>
         </div>
-      )}
-    </>
+        <button
+          aria-label="Close"
+          style={buttonStyle}
+          onClick={handleButtonClick}>
+            <img src={closeIcon} alt="Close" style={iconStyle} />
+        </button>
+      </div>
+    )}
+  </>
   );
 }
 
