@@ -1,4 +1,5 @@
 import React from 'react';
+import './CourseList.css';
 
 const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
   const HeaderCell = ({ children, colSpan = 1 }) => (

@@ -1,9 +1,8 @@
 .Notifications {
   display: flex;
   text-align: left;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-start;
-  border: 5px dotted red;
 }
 
 .Notifications p {
@@ -14,7 +13,8 @@
 }
 
 .Notifications-content ul {
-  padding-left: 4rem;
+  padding: 2rem;
+  border: 5px dotted red;
 }
 
 li[data-notification-type="default"] {

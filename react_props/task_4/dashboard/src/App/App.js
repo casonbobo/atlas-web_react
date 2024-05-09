@@ -12,7 +12,7 @@ import Footer from '../Footer/Footer.js';
 function App({isLoggedIn }) {
   return (
     <div className="App">
-      <Notifications />
+      <div className="Notification-box"><Notifications /></div>
         <Header />
         <main className="App-body align-items">
           <div>
