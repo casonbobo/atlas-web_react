@@ -1,0 +1,24 @@
+.App {
+  text-align: right;
+}
+:root {
+  --red: #E1160B;
+}
+.App-logo {
+  height: 12rem;
+  pointer-events: none;
+}
+
+.App-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.App-body p {
+  font-family: 'Galano Grotesque Alt', sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
