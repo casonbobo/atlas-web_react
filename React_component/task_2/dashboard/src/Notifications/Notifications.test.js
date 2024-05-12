@@ -1,24 +1,35 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import Notifications from './Notifications';
+import React from "react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
+import Notifications from "./Notifications";
+import { getLatestNotification } from "../utils/utils";
 
-describe('Notifications component', () => {
-  let wrapper;
+jest.mock("../utils/utils", () => ({
+  getLatestNotification: jest.fn(() => ["New course available", "New security risk"]),
+}));
 
-  beforeEach(() => {
-    wrapper = shallow(<Notifications />, { context: {} });
+describe("Notifications", () => {
+  it("renders without crashing", () => {
+    render(<Notifications displayDrawer={true} />);
   });
 
-  test('renders without crashing', () => {
-    expect(wrapper.exists()).toBe(true);
+  it("renders the correct number of notifications", async () => {
+    const { getByText } = render(<Notifications displayDrawer={true} />);
+    await waitFor(() => {
+      expect(getByText("Here is the list of notifications")).toBeInTheDocument();
+      expect(getByText("New course available")).toBeInTheDocument();
+      expect(getByText("New security risk")).toBeInTheDocument();
+    });
   });
 
-  test('renders three list items', () => {
-    expect(wrapper.find('ul').children()).toHaveLength(3);
-  });
-
-  test('renders the text "Here is the list of notifications"', () => {
-    expect(wrapper.find('p').text()).toBe('Here is the list of notifications');
+  it("calls markAsRead function when button is clicked", async () => {
+    const mockMarkAsRead = jest.fn();
+    const { getByText } = render(<Notifications displayDrawer={true} markAsRead={mockMarkAsRead} />);
+    const button = getByText("close");
+    fireEvent.click(button);
+    await waitFor(() => {
+      expect(mockMarkAsRead).toHaveBeenCalledWith(1);
+      expect(mockMarkAsRead).toHaveBeenCalledWith(2);
+    });
   });
 });
 

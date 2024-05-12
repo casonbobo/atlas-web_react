@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-function NotificationItem({ type, html, value }) {
+function NotificationItem({ type, html, value, id, markAsRead }) {
   const listItemContent = html ? (
-    <li data-notification-type={type} dangerouslySetInnerHTML={html}></li>
+    <li
+      onClick={() => markAsRead(id)}
+      data-notification-type={type}
+      dangerouslySetInnerHTML={html}
+    ></li>
   ) : (
-    <li data-notification-type={type}>{value}</li>
+    <li
+      onClick={() => markAsRead(id)}
+      data-notification-type={type}
+    >{value}</li>
   );
 
   return listItemContent;
@@ -13,6 +20,7 @@ function NotificationItem({ type, html, value }) {
 
 NotificationItem.defaultProps = {
   type: 'default',
+  id: '', // add a default value for the new property id
 };
 
 NotificationItem.propTypes = {
@@ -21,6 +29,8 @@ NotificationItem.propTypes = {
   }),
   type: PropTypes.string,
   value: PropTypes.string,
+  id: PropTypes.string, // define the new property id
+  markAsRead: PropTypes.func.isRequired,
 };
 
 export default NotificationItem

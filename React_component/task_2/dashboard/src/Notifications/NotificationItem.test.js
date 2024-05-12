@@ -1,23 +1,27 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import NotificationItem from './NotificationItem';
+import React from "react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
+import NotificationItem from "./NotificationItem";
 
-describe('NotificationItem', () => {
-  it('renders without crashing', () => {
-    shallow(<NotificationItem />);
+describe("NotificationItem", () => {
+  it("renders without crashing", () => {
+    render(<NotificationItem type="default" value="New course available" />);
   });
 
-  it('renders with type and value props', () => {
-    const type = "default";
-    const value = "test";
-    const wrapper = shallow(<NotificationItem type={type} value={value} />);
-    expect(wrapper.find('li').prop('data-notification-type')).toEqual(type);
-    expect(wrapper.text()).toContain(value);
+  it("renders the correct type and value", async () => {
+    const { getByText } = render(<NotificationItem type="default" value="New course available" />);
+    await waitFor(() => {
+      expect(getByText("New course available")).toBeInTheDocument();
+      expect(getByText("default")).toBeInTheDocument();
+    });
   });
 
-  it('renders with html prop', () => {
-    const html = { __html: '<u>test</u>' };
-    const wrapper = shallow(<NotificationItem html={html} />);
-    expect(wrapper.html()).toContain('<u>test</u>');
+  it("calls markAsRead function when button is clicked", async () => {
+    const mockMarkAsRead = jest.fn();
+    const { getByText } = render(<NotificationItem type="default" value="New course available" markAsRead={mockMarkAsRead} />);
+    const button = getByText("close");
+    fireEvent.click(button);
+    await waitFor(() => {
+      expect(mockMarkAsRead).toHaveBeenCalledWith(1);
+    });
   });
-})
+});
