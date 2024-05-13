@@ -33,4 +33,4 @@ NotificationItem.propTypes = {
   markAsRead: PropTypes.func.isRequired,
 };
 
-export default NotificationItem
+export default React.memo(NotificationItem);

@@ -55,3 +55,17 @@ test('renders correctly if a list of notifications is passed', () => {
   const notificationItems = screen.getAllByTestId('notification-item');
   expect(notificationItems.length).toBe(3);
 });
+
+describe('Notifications component', () => {
+  it('does not re-render when props are the same', () => {
+    const wrapper = shallow(<Notifications listNotifications={[]} />);
+    wrapper.setProps({ listNotifications: [] });
+    expect(wrapper.instance().shouldComponentUpdate).toHaveBeenCalledTimes(0);
+  });
+
+  it('re-renders when props have a longer list', () => {
+    const wrapper = shallow(<Notifications listNotifications={[]} />);
+    wrapper.setProps({ listNotifications: [getLatestNotification()] });
+    expect(wrapper.instance().shouldComponentUpdate).toHaveBeenCalledTimes(1);
+  });
+});

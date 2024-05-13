@@ -1,12 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import './Notifications.css';
 import NotificationItem from "./NotificationItem";
 import closeIcon from '../../assets/close.png';
 import { getLatestNotification } from "../utils/utils";
 import PropTypes from 'prop-types';
 
-class Notifications extends Component {
-
+class Notifications extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    return nextProps.listNotifications.length !== this.props.listNotifications.length;
+  }
   markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
   }
