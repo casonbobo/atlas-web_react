@@ -1,8 +1,8 @@
 import React from 'react';
 import CourseListRow from './CourseListRow';
-import './CourseList.css'
 import { CourseShape } from './CourseShape';
 import PropTypes from 'prop-types';
+import { StyleSheet } from 'aphrodite';
 
 const CourseList = ({listCourses}) => {
   return (
@@ -22,6 +22,35 @@ const CourseList = ({listCourses}) => {
     </table>
   );
 }
+
+const styles = StyleSheet.create({
+  CourseList: {
+    width: '90%',
+    borderCollapse: 'collapse',
+    margin: '1rem auto',
+    fontFamily: `'Galano Grotesque Alt', sans-serif`,
+    fontWeight: 400,
+    border: '1px solid #e0e0e0',
+  },
+  headerCell: {
+    textAlign: 'center',
+  },
+  secondHeaderRow: {
+    borderTop: '2px solid #e0e0e0',
+    borderBottom: '2px solid #e0e0e0',
+  },
+  firstHeaderCell: {
+    textAlign: 'left',
+    width: '70%',
+  },
+  secondHeaderCell: {
+    textAlign: 'left',
+    width: '30%',
+  },
+  dataCell: {
+    textAlign: 'left',
+  },
+});
 
 CourseList.propTypes = {
   listCourses: PropTypes.arrayOf(CourseShape),

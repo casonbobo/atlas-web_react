@@ -1,9 +1,10 @@
-import './Login.css';
+// import './Login.css';
 import React from 'react';
+import { StyleSheet, css } from 'aphrodite';
 function App() {
   return (
-    <div className="App">
-      <main className="align-items=left">
+    <div className={css(styles.App)}>
+      <main className={css(styles.Login)}>
         <p>Login to access the full dashboard</p>
         <div>
           <form>
@@ -18,5 +19,28 @@ function App() {
     </div>
   );
 }
+
+const styles = StyleSheet.create({
+  App: {
+    textAlign: 'center',
+  },
+  root: {
+    '--red': '#E1160B',
+  },
+  AppLogo: {
+    height: '12rem',
+    pointerEvents: 'none',
+  },
+  AppBody: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    minHeight: '100vh',
+    flexDirection: 'column',
+  },
+  Login: {
+    alignItems: 'left',
+  }
+});
 
 export default App;
