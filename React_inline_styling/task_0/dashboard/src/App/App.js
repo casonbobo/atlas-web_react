@@ -65,8 +65,6 @@ class App extends React.Component {
   }
 }
 
-import { StyleSheet } from 'aphrodite';
-
 const styles = StyleSheet.create({
   root: {
     '--red': '#E1160B',
@@ -114,6 +112,12 @@ const styles = StyleSheet.create({
     width: '100%',
     borderCollapse: 'collapse',
   },
+  body: {
+    fontWeight: 100,
+  },
+  footer: {
+    fontWeight: 100,
+  }
 });
 
 App.defaultProps = {

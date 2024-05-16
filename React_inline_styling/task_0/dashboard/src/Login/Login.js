@@ -38,9 +38,6 @@ const styles = StyleSheet.create({
     minHeight: '100vh',
     flexDirection: 'column',
   },
-  Login: {
-    alignItems: 'left',
-  }
 });
 
 export default App;
