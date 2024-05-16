@@ -1,5 +1,6 @@
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
+import { StyleSheetTestUtils } from "@testing-library/jest-dom/extend-expect";
 import Notifications from "./Notifications";
 import { getLatestNotification } from "../utils/utils";
 
@@ -8,6 +9,10 @@ jest.mock("../utils/utils", () => ({
 }));
 
 describe("Notifications", () => {
+  beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+
   it("renders without crashing", () => {
     render(<Notifications displayDrawer={true} />);
   });
