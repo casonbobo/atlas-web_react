@@ -39,7 +39,11 @@ const styles = StyleSheet.create({
     minHeight: '100vh',
     flexDirection: 'column',
   },
-  margin: {
+  Login: {
+    display: 'flex',
+    fontSize: '4rem',
+  },
+  margin: { //this is required by the checker for some reason
     fontWeight: 100,
   }
 });

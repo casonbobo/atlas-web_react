@@ -1,6 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { StyleSheetTestUtils } from '@testing-library/jest-dom/extend-expect';
 import CourseList from './CourseList';
+
+beforeEach(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
 
 test('renders CourseList component without crashing', () => {
   render(<CourseList />);
