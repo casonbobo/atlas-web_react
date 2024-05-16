@@ -25,20 +25,6 @@ const styles = StyleSheet.create({
   App: {
     textAlign: 'center',
   },
-  root: {
-    '--red': '#E1160B',
-  },
-  AppLogo: {
-    height: '12rem',
-    pointerEvents: 'none',
-  },
-  AppBody: {
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    minHeight: '100vh',
-    flexDirection: 'column',
-  },
   Login: {
     display: 'flex',
     fontSize: '4rem',

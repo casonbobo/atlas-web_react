@@ -1,6 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import { StyleSheetTestUtils } from '@testing-library/jest-dom/extend-expect';
 import Header from './Header';
+
+beforeEach(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
+
+test('renders Header component without crashing', () => {
+  render(<Header />);
+});
 
 describe('Header', () => {
   it('renders without crashing', () => {
