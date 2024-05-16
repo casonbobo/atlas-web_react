@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
     minHeight: '100vh',
     flexDirection: 'column',
   },
+  margin: {
+    fontWeight: 100,
+  }
 });
 
 export default App;
