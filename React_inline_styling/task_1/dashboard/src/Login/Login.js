@@ -1,38 +1,55 @@
-import React, { Component } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import React from "react";
+import PropTypes from "prop-types";
+import { Stylesheet } from "aphrodite";
 
-class Login extends Component {
-  render() {
-    return (
-      <div className={css(styles.App)}>
-        <main className={css(styles.Login)}>
-          <p>Login to access the full dashboard</p>
-          <div>
-            <form>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required></input>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required></input>
-                <button>OK</button>
-            </form>
-          </div>
-        </main>
-      </div>
-    );
-  }
-}
-  
-const styles = StyleSheet.create({
-  App: {
-    textAlign: 'center',
+const styles = Stylesheet.create({
+  formContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "20px",
   },
-  Login: {
-    display: 'flex',
-    fontSize: '4rem',
+  label: {
+    marginBottom: "10px",
   },
-  margin: { //this is required by the checker for some reason
-    fontWeight: 100,
-  }
+  input: {
+    marginBottom: "20px",
+  },
+  button: {
+    marginTop: "20px",
+  },
+  'media (max-width: 900px)': {
+    formContainer: {
+      padding: "10px",
+    },
+    label: {
+      marginBottom: "5px",
+    },
+    input: {
+      marginBottom: "10px",
+    },
+    button: {
+      marginTop: "10px",
+    },
+  },
 });
+
+function Login({ onSubmit }) {
+  return (
+    <div className={styles.formContainer}>
+      <label className={styles.label}>Username</label>
+      <input className={styles.input} type="text" />
+      <label className={styles.label}>Password</label>
+      <input className={styles.input} type="password" />
+      <button className={styles.button} onClick={onSubmit}>
+        Login
+      </button>
+    </div>
+  );
+}
+
+Login.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Login;
