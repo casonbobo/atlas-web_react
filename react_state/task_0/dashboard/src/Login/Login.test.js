@@ -20,4 +20,24 @@ describe('Login', () => {
     expect(wrapper.find('input')).toHaveLength(2);
     expect(wrapper.find('label')).toHaveLength(2);
   });
+  it('submit button is disabled by default', () => {
+    const { getByRole } = render(<Login />);
+    const submitButton = getByRole('button', { name: 'Login' });
+    expect(submitButton).toBeDisabled();
+  });
+
+  it('submit button is enabled after changing the value of the two inputs', async () => {
+    const { getByRole, getByLabelText } = render(<Login />);
+    const emailInput = getByLabelText('Email:');
+    const passwordInput = getByLabelText('Password:');
+    const submitButton = getByRole('button', { name: 'Login' });
+
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'password123' } });
+
+    await waitFor(() => {
+      expect(submitButton).not.toBeDisabled();
+    });
+  });
+
 });
