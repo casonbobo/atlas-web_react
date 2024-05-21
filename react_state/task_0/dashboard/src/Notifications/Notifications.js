@@ -43,7 +43,7 @@ class Notifications extends React.Component {
           <p>Your Notifications</p>
         </div>
         {displayDrawer && (
-          <div className={css(styles.Notifications)}>
+          <div className={css(styles.Notifications)} onClick={handleDisplayDrawer}>
             <div className={css(styles.NotificationsContent)}>
               {listNotifications.length > 0 && (
                 <p>Here is the list of notifications</p>

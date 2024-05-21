@@ -16,6 +16,16 @@ class App extends React.Component {
     displayDrawer: false,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayDrawer: false
+    };
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
+  }
+  
   listCourses = [
     { id: 1, name: 'ES6', credit: 60 },
     { id: 2, name: 'Webpack', credit: 20 },

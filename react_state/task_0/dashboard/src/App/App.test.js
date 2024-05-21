@@ -63,6 +63,12 @@ test('default state for displayDrawer is false', () => {
   expect(displayDrawer).toBe(false);
 });
 
+test('verify that the default state for displayDrawer is false, then true after calling handleDisplayDrawer', () => {
+  expect(wrapper.state('displayDrawer')).toBe(false);
+  wrapper.instance().handleDisplayDrawer();
+  expect(wrapper.state('displayDrawer')).toBe(true);
+});
+
 test('handleDisplayDrawer updates state to true', () => {
   const { getByState, rerender } = render(<App />);
   const displayDrawer = getByState('displayDrawer');
