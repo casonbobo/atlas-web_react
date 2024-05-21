@@ -1,7 +1,5 @@
 import React from "react";
 import NotificationItem from "./NotificationItem";
-import closeIcon from '../../assets/close.png';
-import { getLatestNotification } from "../utils/utils";
 import PropTypes from 'prop-types';
 import { StyleSheet, css, keyframes } from "aphrodite";
 
@@ -28,11 +26,6 @@ class Notifications extends React.Component {
   markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
   }
-
-  handleButtonClick = () => {
-    console.log("close button has been clicked");
-  };
-
   
   render() {
     const { displayDrawer, listNotifications } = this.props;
@@ -64,11 +57,12 @@ class Notifications extends React.Component {
               </ul>
             </div>
             <button
-              aria-label="Close"
-              className={css(styles.button)}
-              onClick={this.handleButtonClick}>
-                <img src={closeIcon} alt="Close" className={css(styles.icon)} />
-            </button>
+                className='close-button'
+                type='button'
+                onClick={handleHideDrawer}
+                style={{ display: 'inline', position: 'absolute', top: '1px', right: '1px', background: 'none', border: 'none' }}
+                aria-label='Close'
+              />
           </div>
         )}
       </>
