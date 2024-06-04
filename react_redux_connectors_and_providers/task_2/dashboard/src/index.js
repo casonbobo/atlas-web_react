@@ -1,20 +1,21 @@
-import React from 'eact';
-import { Provider } from 'eact-redux';
-import { createStore, applyMiddleware } from 'edux';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import App from './App';
-import thunk from 'edux-thunk';
+import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import uiReducer from './reducers/uiReducer';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-function Index() {
-  return (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-}
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
 
 export default store;
 
