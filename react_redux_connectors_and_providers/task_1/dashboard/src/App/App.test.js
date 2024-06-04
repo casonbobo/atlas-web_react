@@ -147,28 +147,29 @@ test('default state for displayDrawer is false', () => {
   expect(displayDrawer).toBe(false);
 });
 
-test('handleDisplayDrawer updates state to true', () => {
-  const { getByState, rerender } = render(<App />);
-  const displayDrawer = getByState('displayDrawer');
-  expect(displayDrawer).toBe(false);
+//removed as of connectors repo task 6 
+// test('handleDisplayDrawer updates state to true', () => {
+//   const { getByState, rerender } = render(<App />);
+//   const displayDrawer = getByState('displayDrawer');
+//   expect(displayDrawer).toBe(false);
 
-  const handleDisplayDrawer = jest.fn();
-  rerender(<App handleDisplayDrawer={handleDisplayDrawer} />);
+//   const handleDisplayDrawer = jest.fn();
+//   rerender(<App handleDisplayDrawer={handleDisplayDrawer} />);
 
-  fireEvent.click(getByText('Course list'));
-  expect(handleDisplayDrawer).toHaveBeenCalled();
-  expect(displayDrawer).toBe(true);
-});
+//   fireEvent.click(getByText('Course list'));
+//   expect(handleDisplayDrawer).toHaveBeenCalled();
+//   expect(displayDrawer).toBe(true);
+// });
 
-test('handleHideDrawer updates state to false', () => {
-  const { getByState, rerender } = render(<App />);
-  const handleHideDrawer = jest.fn();
-  rerender(<App handleHideDrawer={handleHideDrawer} />);
+// test('handleHideDrawer updates state to false', () => {
+//   const { getByState, rerender } = render(<App />);
+//   const handleHideDrawer = jest.fn();
+//   rerender(<App handleHideDrawer={handleHideDrawer} />);
 
-  fireEvent.click(getByText('Log in to continue'));
-  expect(handleHideDrawer).toHaveBeenCalled();
-  expect(getByState('displayDrawer')).toBe(false);
-});
+//   fireEvent.click(getByText('Log in to continue'));
+//   expect(handleHideDrawer).toHaveBeenCalled();
+//   expect(getByState('displayDrawer')).toBe(false);
+// });
 
 test('verify that markNotificationAsRead works as intended', () => {
   wrapper.setState({
