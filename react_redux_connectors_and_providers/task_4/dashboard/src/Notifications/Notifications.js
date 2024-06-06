@@ -15,6 +15,10 @@ class Notifications extends PureComponent {
     markNotificationAsReadOnly: PropTypes.func,
   }
 
+  componentDidMount() {
+    this.props.fetchNotifications();
+  }
+
   static defaultProps = {
     displayDrawer: true,
     listNotifications: [],
@@ -136,4 +140,11 @@ Notifications.defaultProps = {
   displayDrawer: false,
 };
 
-export default Notifications;
+const mapStateToProps = (state) => ({
+  listNotifications: state.notifications.messages,
+});
+
+const mapDispatchToProps = {
+  fetchNotifications,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
