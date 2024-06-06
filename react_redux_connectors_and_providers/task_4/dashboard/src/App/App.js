@@ -11,8 +11,6 @@ import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import CourseList from '../CourseList/CourseList';
 import { StyleSheet, css } from 'aphrodite';
-import { login } from '../actions/authActions';
-
 
 const mapStateToProps = state => ({
   isLoggedIn: state.uiReducer.isLoggedIn,
@@ -53,12 +51,6 @@ class App extends React.Component {
       alert('Logging you out');
       this.logOut();
     }
-  };
-
-  markNotificationAsRead = (id) => {
-    this.setState(prevState => ({
-      listNotifications: prevState.listNotifications.filter(notification => notification.id!== id),
-    }));
   };
 
   render() {
