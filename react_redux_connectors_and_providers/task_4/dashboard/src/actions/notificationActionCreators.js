@@ -1,18 +1,27 @@
-import { MARK_AS_READ, SET_TYPE_FILTER } from './notificationActionTypes';
-import { useDispath } from 'react-redux';
+import {SET_LOADING_STATE, FETCH_NOTIFICATIONS_SUCCESS} from './notificationActionTypes';
 
-
-export const markAsRead = (notificationId) => ({
-  type: MARK_AS_READ,
-  payload: notificationId,
+export const setLoadingState = (isLoading) => ({
+  type: SET_LOADING_STATE,
+  payload: isLoading,
 });
 
-export const setTypeFilter = (filter) => ({
-  type: SET_TYPE_FILTER,
-  payload: filter,
+export const setNotifications = (notifications) => ({
+  type: FETCH_NOTIFICATIONS_SUCCESS,
+  payload: notifications,
 });
 
-export const bindNotificationActionCreators = (dispatch) => ({
-  boundMarkAsRead: (notificationId) => dispatch(markAsRead(notificationId)),
-  boundTypeFilter: (filter) => dispatch(setTypeFilter(filter))
-});
+export const fetchNotifications = () => async (dispatch) => {
+  dispatch(setLoadingState(true));
+  try {
+    const response = await fetch('/notifications.json');
+    if (!response.ok) {
+      throw new Error('Failed to fetch notifications');
+    }
+    const data = await response.json();
+    dispatch(setNotifications(data));
+  } catch (error) {
+    console.error('Error fetching notifications:', error);
+  } finally {
+    dispatch(setLoadingState(false));
+  }
+};
